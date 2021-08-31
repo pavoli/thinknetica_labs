@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Vacancy for Oracle, Python, C++, C#, JavaScript, Java Developers</title>
+{% endblock title %}
+
+{% block meta_description %}
+    <meta name="description" content="This page shows to you Vacancy lists: Developers, Engineers, Managers.">
+{% endblock meta_description %}
+
+{% block ld_json_seo %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Vacancy",
+      "name": "IT Vacancy list",
+      "author": {
+        "@type": "Person",
+        "name": "John Doe"
+      },
+      "datePublished": "2021-05-12",
+      "description": "IT vacancies: Oracle, Python, Java, JavaScript, ASP.NET, C++, C#"
+    }
+    </script>
+{% endblock ld_json_seo %}
+
+{% block content %}
+    <h1>Vacancy List:</h1>
+    {% if vacancy_list %}
+    <ul>
+        {% for vacancy in vacancy_list %}
+        <li>
+            <a href="{{ vacancy.get_absolute_url }}">{{ vacancy }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no vacancy in the DB.</p>
+    {% endif %}
+{% endblock %}
